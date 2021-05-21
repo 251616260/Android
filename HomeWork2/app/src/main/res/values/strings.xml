@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Gameregister</string>
+    <string name="tips">欢迎来到登陆界面</string>
+    <string name="name">用户名:</string>
+    <string name="passwd">密码:</string>
+    <string name="register">登陆</string>
+    <string name="success">登陆成功</string>
+</resources>
