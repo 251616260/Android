@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Homework1</string>
+    <string name="one">未点击按钮</string>
+    <string name="two">您点击了黑白按钮</string>
+    <string name="three">您点击了彩色按钮</string>
+    <string name="button1">button1</string>
+    <string name="button2">button2</string>
+</resources>
