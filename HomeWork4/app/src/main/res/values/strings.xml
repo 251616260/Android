@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">HomeWork4</string>
+    <string name="tips">点击按钮增加进度条进度</string>
+    <string name="button">按钮</string>
+</resources>
