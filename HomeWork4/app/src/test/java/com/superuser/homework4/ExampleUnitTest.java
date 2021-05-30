@@ -1,4 +1,4 @@
-package com.chj.homework4;
+package com.superuser.homework4;
 
 import org.junit.Test;
 
