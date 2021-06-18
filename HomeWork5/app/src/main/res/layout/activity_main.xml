@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SqliteActivity">
+
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="72dp"
+        android:layout_marginTop="128dp"
+        android:text="@string/btnAdd" />
+
+    <Button
+        android:id="@+id/btnDel"
+        android:layout_alignBaseline="@+id/btnAdd"
+        android:layout_toRightOf="@+id/btnAdd"
+        android:layout_marginLeft="64dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btnDel" />
+
+    <Button
+        android:id="@+id/btnMod"
+        android:layout_below="@+id/btnAdd"
+        android:layout_marginLeft="72dp"
+        android:layout_marginTop="64dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btnMod" />
+
+    <Button
+        android:id="@+id/btnSel"
+        android:layout_alignBaseline="@id/btnMod"
+        android:layout_toRightOf="@id/btnMod"
+        android:layout_marginLeft="64dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btnSel" />
+
+    <ListView
+        android:id="@+id/listCourse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/btnMod"
+        android:layout_alignRight="@id/btnSel"
+        android:layout_below="@id/btnMod"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="32dp">
+    </ListView>
+
+</RelativeLayout>
