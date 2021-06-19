@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">HomeWork6</string>
+    <string name="btnAdd">增加</string>
+    <string name="btnMod">修改</string>
+    <string name="btnDel">删除</string>
+    <string name="btnSel">查询</string>
+    <string name="btnSave">保存</string>
+    <string name="tvName">图书名</string>
+    <string name="tvPrice">图书单价</string>
+    <string name="_id">编号</string>
+    <string name="name">名称</string>
+    <string name="price">价格</string>
+</resources>
