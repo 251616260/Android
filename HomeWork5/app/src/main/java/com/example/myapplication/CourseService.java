@@ -1,30 +1,46 @@
 package com.example.myapplication;
 
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import java.util.ArrayList;
 import java.util.List;
 
-public interface CourseService {
-    DBHelper dbHelper;
+public class CourseService {
+    private  DBHelper dbhelper;
     public CourseService(Context context){
-        dbHelper = new DBHelper(context);
+        this.dbhelper= (DBHelper) DBHelper.getmInstance(context);
     }
-    public void save(User user){
-        SQLiteDatabase sd = dbHelper.getWritableDatabase();
-        sd.execSQL("insert into user(userName,passwd)values(?,?)",new Object[]{user.getUserName(),user.getPasswd()});
+    public void save(Course cs){
+        SQLiteDatabase db = dbhelper.getWritableDatabase();
+        db.execSQL("insert into books(bookName,price) values(?,?)",new Object[]{
+            cs.getCname(),cs.getPrice()
+        });
     }
-    public void update(User user){
-        SQLiteDatabase sd = dbHelper.getWritableDatabase();
-        sd.execSQL("update user set passwd=? where userName=?",new Object[]{user.getPasswd(),user.getUserName()});
+    public void update(Course cs){
+        SQLiteDatabase db = dbhelper.getWritableDatabase();
+        db.execSQL("update books set bookName=?,price=? where _id=?",new Object[]{
+                cs.getCname(),cs.getPrice(),cs.getCid()
+        });
     }
-    public List<User> findAll(){
-        List<User> list = new ArrayList();
-        SQLiteDatabase sd = dbHelper.getReadableDatabase();
-        Cursor cursor = sd.rawQuery("select * from user", null);
-        while(cursor.moveToNext()){				//����ƶ�����һ��
-            String userName = cursor.getString(cursor.getColumnIndex("userName"));
-            String passwd = cursor.getString(cursor.getColumnIndex("passwd"));
-            User user = new User(userName,passwd);
-            list.add(user);
+    public void delete(int _id){
+        SQLiteDatabase db = dbhelper.getWritableDatabase();
+        db.execSQL("delete from books where _id=?",new Object[]{
+                _id+""
+        });
+    }
+    public List<Course> getAllCourse(){
+        List<Course> courses = new ArrayList<>();
+        SQLiteDatabase db = dbhelper.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from books",null);
+        while(cursor.moveToNext()){
+            int bid=cursor.getInt(cursor.getColumnIndex("_id"));
+            String bookName = cursor.getString(cursor.getColumnIndex("bookName"));
+            float price = cursor.getFloat(cursor.getColumnIndex("price"));
+            Course cs = new Course(bid,bookName,price);
+            courses.add(cs);
         }
-        return list;
+        cursor.close();
+        return courses;
     }
 }

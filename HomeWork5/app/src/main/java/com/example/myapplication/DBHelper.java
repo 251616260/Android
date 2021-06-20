@@ -1,44 +1,36 @@
 package com.example.myapplication;
 
+//import from chj
+//毕竟我自己不会，书上也没有
+
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
-    private static int ver = 1;
-    private static String n = "studentSys.db";
+    private static final String DB_NAME="Course.db";
+    private static final int DB_VERSION=1;
 
-    public DBHelper(Context context, String name, CursorFactory factory,
-                    int version) {
-        super(context, name, factory, version);
-        // TODO Auto-generated constructor stub
+    private static SQLiteOpenHelper mInstance;
+    public static synchronized SQLiteOpenHelper getmInstance(Context context){
+        if (mInstance==null){
+            mInstance = new DBHelper(context);
+        }
+        return mInstance;
     }
 
-    public DBHelper(Context context, String name,
-                    int version) {
-        this(context,name,null,version);
-    }
-
-    public DBHelper(Context context, String name) {
-        this(context,name,ver);
-    }
-
-    public DBHelper(Context context) {
-        this(context,n);
+    private DBHelper(Context context){
+        super(context,DB_NAME,null,DB_VERSION);
     }
 
     @Override
-    public void onCreate(SQLiteDatabase arg0) {
-        // TODO Auto-generated method stub
-        arg0.execSQL("create table Course(cid varchar(30) primary key,cname varchar(30),cprice varchar(30) not null");
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL("create table books(_id integer primary key autoincrement,bookName varchar(30),price Float)");
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase arg0, int arg1, int arg2) {
-        // TODO Auto-generated method stub
-        System.out.println("���º�İ汾Ϊ"+arg2);
-
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("drop table if exists books");
+        onCreate(db);
     }
-
 }

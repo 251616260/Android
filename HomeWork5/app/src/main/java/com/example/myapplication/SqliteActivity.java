@@ -128,7 +128,7 @@ public class SqliteActivity extends AppCompatActivity {
                             public void onClick(DialogInterface arg0, int arg1) {
                                 setContentView(layout1);
                             }
-                        }).show()
+                        }).show();
                 return false;
             }
         });
@@ -148,8 +148,6 @@ public class SqliteActivity extends AppCompatActivity {
                     public void onClick(View arg0) {
                         if(etname.getText().equals(null) || etprice.getText().equals(null)){
                             Toast.makeText(SqliteActivity.this, "不能为空！", Toast.LENGTH_SHORT).show();
-                        }
-                        else if (etprice.getText()){
                         }
                         else {
                             String name = etname.getText().toString().trim();
